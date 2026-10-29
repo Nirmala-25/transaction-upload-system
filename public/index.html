@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transaction Import Tool</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div>
+            <h1>Transaction Import Tool</h1>
+            <p>Upload, validate and authorize transactions</p>
+        </div>
+        <span class="role-label">Maker / Checker</span>
+    </header>
+
+    <main class="container">
+
+        <section class="upload-card">
+            <h2>Upload Transactions</h2>
+            <p>Select a CSV file to validate and import transactions.</p>
+
+            <form id="uploadForm">
+                <input
+                    type="file"
+                    id="csvFile"
+                    name="file"
+                    accept=".csv"
+                    required
+                >
+
+                <button type="submit" id="uploadButton">
+                    Upload CSV
+                </button>
+            </form>
+
+            <div id="uploadMessage" role="status"></div>
+        </section>
+
+        <section id="errorSection" class="error-section" hidden>
+            <h2>Validation Errors</h2>
+            <div id="errorResults"></div>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <p>Total Batches</p>
+                <h2 id="totalBatches">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Total Transactions</p>
+                <h2 id="totalTransactions">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Pending</p>
+                <h2 id="pendingTransactions">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <p>Authorized</p>
+                <h2 id="authorizedTransactions">0</h2>
+            </div>
+        </section>
+
+        <section class="table-card">
+            <div class="section-heading">
+                <div>
+                    <h2>Uploaded Batches</h2>
+                    <p>View batch details and approve pending batches.</p>
+                </div>
+
+                <button type="button" class="secondary-button"
+                    id="refreshButton">
+                    Refresh
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Batch ID</th>
+                            <th>File Name</th>
+                            <th>Total</th>
+                            <th>Valid</th>
+                            <th>Invalid</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="batchesTable">
+                        <tr>
+                            <td colspan="7">Loading batches...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="table-card">
+            <div class="section-heading">
+                <div>
+                    <h2>Audit Logs</h2>
+                    <p>History of uploads and approvals.</p>
+                </div>
+
+                <button type="button" class="secondary-button"
+                    id="auditRefreshButton">
+                    Refresh Logs
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Batch ID</th>
+                            <th>Action</th>
+                            <th>Performed By</th>
+                            <th>Details</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="auditTable">
+                        <tr>
+                            <td colspan="5">Loading audit logs...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="detailsSection" class="table-card" hidden>
+            <div class="section-heading">
+                <h2 id="detailsHeading">Batch Details</h2>
+                <button type="button" class="secondary-button"
+                    id="closeDetailsButton">
+                    Close
+                </button>
+            </div>
+
+            <div id="batchInfo"></div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Customer</th>
+                            <th>Account Number</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionsTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        Transaction Import Tool · Junior Developer Assignment
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

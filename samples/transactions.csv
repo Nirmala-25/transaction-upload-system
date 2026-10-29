@@ -1,0 +1,7 @@
+transaction_id,customer_name,account_number,amount
+TXN001,Rahul Sharma,ACC1001,5000
+TXN002,Priya Patel,ACC1002,2500
+TXN003,Amit Shah,ACC1003,-500
+TXN001,Neha Joshi,ACC1004,1500
+TXN005,Anita Rao,,2000
+TXN006,Anita Desai,ACC1006,3200
